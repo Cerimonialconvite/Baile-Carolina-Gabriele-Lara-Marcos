@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Baile de Formatura · Direito</title>
+<meta name="description" content="Sábado, 30 de janeiro de 2027 · 21h · Cerimonial Caminho das Árvores">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Baile de Formatura · Direito">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://cerimonialconvite.github.io/formatura-direito-2027/">
+<meta property="og:title" content="Baile de Formatura · Direito">
+<meta property="og:description" content="Sábado, 30 de janeiro de 2027 · 21h · Cerimonial Caminho das Árvores">
+<meta property="og:image" content="https://cerimonialconvite.github.io/formatura-direito-2027/img/og.jpg">
+<meta property="og:image:secure_url" content="https://cerimonialconvite.github.io/formatura-direito-2027/img/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2a0008">
+<link rel="icon" href="img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preload" href="img/fundo.jpg" as="image">
+<style>
+  :root{--ouro:#EDCF86;--ouro2:#F7C260;--u:0.5px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:#1c0005}
+  body{background:#1c0005;color:var(--ouro);-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+  body.intro{overflow:hidden;height:100vh}
+  .pagina{position:relative;width:min(100vw,540px);margin:0 auto;aspect-ratio:1080/5578;background:#2a0008 url(img/fundo.jpg) top center/100% auto no-repeat;overflow:hidden;box-shadow:0 0 60px rgba(0,0,0,.6)}
+  .el{position:absolute;display:block;height:auto}
+  .el img{display:block;width:100%;height:auto}
+  img.el{pointer-events:none;user-select:none}
+
+  /* ---------- véu da abertura ---------- */
+  #veu{position:fixed;inset:0;z-index:40;background:radial-gradient(ellipse at 50% 45%,#3a0410 0%,#1c0005 70%);transition:opacity 1.1s ease;pointer-events:none}
+  #veu.some{opacity:0}
+
+  /* ---------- logo ---------- */
+  #logo{position:absolute;z-index:50;transform-origin:0 0;will-change:transform}
+  #logo svg{display:block;width:100%;height:auto;overflow:visible}
+  #logo.voa{transition:transform 1.3s cubic-bezier(.65,0,.25,1)}
+  .folha{fill:none;stroke:#E9B85E;stroke-width:2;stroke-linejoin:round}
+  .balanca{filter:drop-shadow(0 5px 6px rgba(0,0,0,.45))}
+  #brilho-bal{transform:translateX(-260px)}
+  #logo.brilha #brilho-bal{animation:varre 1.1s cubic-bezier(.5,0,.3,1) forwards}
+  @keyframes varre{to{transform:translateX(760px)}}
+  #logo.halo svg{animation:halo 2.4s ease-out}
+  @keyframes halo{0%{filter:drop-shadow(0 0 0 rgba(247,194,96,0))}35%{filter:drop-shadow(0 0 18px rgba(247,194,96,.55))}100%{filter:drop-shadow(0 0 0 rgba(247,194,96,0))}}
+
+  /* ---------- entradas (cada efeito começa escondido e anima com .on) ---------- */
+  .fx-wipe,.fx-escrita{-webkit-mask-image:linear-gradient(90deg,#000 44%,transparent 56%);mask-image:linear-gradient(90deg,#000 44%,transparent 56%);-webkit-mask-size:260% 100%;mask-size:260% 100%;-webkit-mask-position:100% 0;mask-position:100% 0;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+  .fx-wipe.on{animation:wipe 1.7s cubic-bezier(.45,0,.25,1) var(--d) forwards}
+  .fx-escrita.on{animation:wipe 2.3s cubic-bezier(.5,0,.35,1) var(--d) forwards}
+  @keyframes wipe{to{-webkit-mask-position:0 0;mask-position:0 0}}
+  .faisca{position:absolute;left:0;top:52%;width:calc(var(--u)*26);height:calc(var(--u)*26);margin:calc(var(--u)*-13);border-radius:50%;background:radial-gradient(circle,#fff6d8 0%,rgba(247,194,96,.9) 30%,rgba(247,194,96,0) 70%);opacity:0;pointer-events:none}
+  .fx-escrita.on .faisca{animation:faisca 2.3s cubic-bezier(.5,0,.35,1) var(--d) forwards}
+  @keyframes faisca{0%{left:0;top:55%;opacity:0}8%{opacity:1}30%{top:35%}55%{top:62%}80%{top:40%;opacity:1}100%{left:100%;top:50%;opacity:0}}
+
+  .fx-blur,.fx-nome{opacity:0;filter:blur(10px);transform:translateY(calc(var(--u)*22))}
+  .fx-blur.on,.fx-nome.on{animation:blurin 1.3s cubic-bezier(.2,.7,.2,1) var(--d) forwards}
+  @keyframes blurin{to{opacity:1;filter:blur(0);transform:none}}
+  .fx-ponto{opacity:0;transform:scale(0)}
+  .fx-ponto.on{animation:ponto .7s cubic-bezier(.3,1.6,.5,1) calc(var(--d) + 250ms) forwards}
+  @keyframes ponto{to{opacity:1;transform:none}}
+
+  .fx-spread{opacity:0;transform:scaleX(1.35);filter:blur(7px)}
+  .fx-spread.on{animation:spread 1.6s cubic-bezier(.2,.8,.2,1) var(--d) forwards}
+  @keyframes spread{to{opacity:1;transform:none;filter:blur(0)}}
+
+  .fx-linha{opacity:0;transform:scaleX(0)}
+  .fx-linha.on{animation:linha 1.4s cubic-bezier(.7,0,.2,1) var(--d) forwards}
+  @keyframes linha{to{opacity:1;transform:none}}
+  .fx-desce{opacity:0;transform:translateY(calc(var(--u)*-26));filter:blur(6px)}
+  .fx-sobe{opacity:0;transform:translateY(calc(var(--u)*26));filter:blur(6px)}
+  .fx-esq{opacity:0;transform:translateX(calc(var(--u)*-40));filter:blur(6px)}
+  .fx-dir{opacity:0;transform:translateX(calc(var(--u)*40));filter:blur(6px)}
+  .fx-desce.on,.fx-sobe.on,.fx-esq.on,.fx-dir.on{animation:blurin 1.2s cubic-bezier(.2,.7,.2,1) var(--d) forwards}
+  .fx-trinta{opacity:0;transform:scale(1.7);filter:blur(14px)}
+  .fx-trinta.on{animation:trinta 1.5s cubic-bezier(.2,.8,.2,1) var(--d) forwards,brilho30 2.2s ease-out calc(var(--d) + 1.2s)}
+  @keyframes trinta{to{opacity:1;transform:none;filter:blur(0)}}
+  @keyframes brilho30{0%,100%{filter:drop-shadow(0 0 0 rgba(247,194,96,0))}40%{filter:drop-shadow(0 0 calc(var(--u)*22) rgba(247,194,96,.75))}}
+
+  /* ---------- dama da justiça + tecido ---------- */
+  .aura{position:absolute;border-radius:50%;background:radial-gradient(ellipse at 50% 45%,rgba(247,194,96,.22) 0%,rgba(247,194,96,.07) 40%,rgba(247,194,96,0) 68%);opacity:0;transition:opacity 2.4s ease .5s}
+  .aura.on{opacity:1}
+  .dama{opacity:0;transform:translateY(16%);filter:brightness(.4)}
+  .dama.on{animation:dama 2.2s cubic-bezier(.2,.75,.2,1) var(--d) forwards}
+  @keyframes dama{to{opacity:1;transform:none;filter:brightness(1)}}
+  .dama>img{display:block;width:100%;height:auto}
+  .dama .prato{position:absolute;inset:0;width:100%;will-change:transform}
+  #prato-esq{transform-origin:11.36% 20.95%}
+  #prato-dir{transform-origin:39.68% 19.50%}
+  .fx-tecido{opacity:0;transform:translateX(-70%) skewX(-10deg);filter:blur(4px)}
+  .fx-tecido.on{animation:tecido 2s cubic-bezier(.2,.8,.2,1) var(--d) forwards}
+  .fx-tecido.on img{animation:ondula 7s ease-in-out 2s infinite}
+  @keyframes tecido{to{opacity:1;transform:none;filter:blur(0)}}
+  @keyframes ondula{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(calc(var(--u)*-7)) scaleY(1.025)}}
+
+  /* ---------- contagem ---------- */
+  .contagem{position:absolute;left:0;width:100%;text-align:center}
+  .contagem .titulo{font-family:"Cinzel",serif;font-weight:400;font-size:calc(var(--u)*40);letter-spacing:.32em;padding-left:.32em;color:var(--ouro);opacity:0;filter:blur(8px)}
+  .contagem.on .titulo{animation:blurin 1.3s ease forwards}
+  .contagem .sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:300;font-size:calc(var(--u)*40);color:#fff4dc;margin-top:calc(var(--u)*6);opacity:0}
+  .contagem.on .sub{animation:blurin 1.3s ease .3s forwards}
+  .relogio{display:flex;justify-content:center;align-items:stretch;gap:calc(var(--u)*14);margin-top:calc(var(--u)*46)}
+  .uni{width:calc(var(--u)*176);padding:calc(var(--u)*22) 0 calc(var(--u)*18);position:relative;opacity:0;transform:translateY(calc(var(--u)*30))}
+  .uni::before,.uni::after{content:"";position:absolute;left:0;right:0;height:calc(var(--u)*2.2);background:linear-gradient(90deg,rgba(237,207,134,0),var(--ouro) 20%,var(--ouro) 80%,rgba(237,207,134,0));transform:scaleX(0)}
+  .uni::before{top:0}.uni::after{bottom:0}
+  .contagem.on .uni{animation:blurin 1.1s cubic-bezier(.2,.7,.2,1) calc(.5s + var(--i)*.15s) forwards}
+  .contagem.on .uni::before,.contagem.on .uni::after{animation:linha 1.2s cubic-bezier(.7,0,.2,1) calc(.7s + var(--i)*.15s) forwards}
+  .uni b{display:block;font-family:"Cormorant Garamond",serif;font-weight:300;font-size:calc(var(--u)*116);line-height:1;color:var(--ouro);font-variant-numeric:lining-nums tabular-nums}
+  .uni small{display:block;margin-top:calc(var(--u)*12);font-family:"Cinzel",serif;font-size:calc(var(--u)*24);letter-spacing:.22em;padding-left:.22em;color:#fff4dc}
+  .chegou{display:none;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:calc(var(--u)*70);margin-top:calc(var(--u)*30)}
+
+  /* ---------- ícones ---------- */
+  .icone{z-index:3;border:0;background:none;padding:0;cursor:pointer;opacity:0;transform:scale(.4) rotate(-25deg);border-radius:50%}
+  .icone.on{animation:pop 1s cubic-bezier(.25,1.5,.45,1) var(--d) forwards}
+  @keyframes pop{to{opacity:1;transform:none}}
+  .icone .reflexo{position:absolute;inset:8%;border-radius:50%;overflow:hidden;pointer-events:none}
+  .icone .reflexo::before{content:"";position:absolute;top:-20%;bottom:-20%;width:40%;left:-60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,250,225,.55),rgba(255,255,255,0));transform:skewX(-18deg)}
+  .icone.on .reflexo::before{animation:reflexo 4.5s ease-in-out calc(var(--d) + 1.2s) infinite}
+  @keyframes reflexo{0%{left:-60%}28%,100%{left:130%}}
+  .icone::after{content:"";position:absolute;inset:8%;border-radius:50%;pointer-events:none}
+  .icone.on::after{animation:pulso 2.6s ease-in-out calc(var(--d) + 1s) infinite}
+  @keyframes pulso{0%,100%{box-shadow:0 0 0 0 rgba(247,194,96,0)}50%{box-shadow:0 0 calc(var(--u)*34) calc(var(--u)*6) rgba(247,194,96,.32)}}
+  .icone:focus-visible{outline:2px solid var(--ouro);outline-offset:4px}
+
+  /* ---------- poeira dourada ---------- */
+  #poeira{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:30}
+
+  /* ---------- confirmação (Forms dentro do convite) ---------- */
+  #rsvp{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(15,0,3,.82);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .4s ease}
+  #rsvp.aberto{opacity:1;pointer-events:auto}
+  #rsvp .janela{position:relative;width:min(94vw,calc(92vh * 9 / 16));aspect-ratio:9/16;max-height:92vh;background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(237,207,134,.6);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  #rsvp iframe{width:100%;height:100%;border:0;display:block}
+  #rsvp .fechar{position:absolute;top:8px;right:8px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(168,120,40,.5);background:#2a0008;color:var(--ouro);font:400 22px/1 "Cinzel",serif;cursor:pointer;z-index:2}
+  #rsvp .aviso{display:flex;align-items:center;justify-content:center;height:100%;padding:30px;text-align:center;font:400 20px "Cormorant Garamond",serif;color:#2a0008}
+
+  @media (prefers-reduced-motion: reduce){
+    .fx-wipe,.fx-escrita{-webkit-mask-position:0 0!important;mask-position:0 0!important}
+    [class*="fx-"],.dama,.icone,.uni,.contagem .titulo,.contagem .sub{opacity:1!important;transform:none!important;filter:none!important;animation:none!important}
+    .uni::before,.uni::after{transform:none!important}
+    #poeira{display:none}
+  }
+</style>
+</head>
+<body class="intro">
+<div id="veu"></div>
+<canvas id="poeira" aria-hidden="true"></canvas>
+
+<main class="pagina" id="pagina">
+
+  <!-- logo (abertura) -->
+  <div id="logo" style="left:28.8889%;top:4.4102%;width:45.0926%" role="img" aria-label="Balança da Justiça entre ramos de louro">
+    <svg viewBox="0 0 676.98 602.03" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ouro-bal" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFD98A"/><stop offset=".55" stop-color="#F7C260"/><stop offset="1" stop-color="#E3A647"/>
+        </linearGradient>
+        <linearGradient id="faixa-luz" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#FFF8E0" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <clipPath id="forma-bal"><path d="M325.65,388.49c-3.91-2.98-3.95-7.98-2.54-13.94.97-4.11-.89-8.87-.04-13.05,6.94-34.15,2.64-68.67,3.67-103.01.1-3.31-2.15-6.62-2.72-10.03-.9-5.43-1.54-10.93-1.84-16.43-.3-5.49.98-11.04-5.6-14.46-3.52-1.83-2.44-5.11,1.23-6.39,2.72-.95,6.3-.37,8.41-1.93,2.1-1.56,4.01-4.98,3.93-7.52-.14-4.41-1.87-8.77-3.39-15.05-6.11-.65-14.34-2.78-22.34-2.12-17.88,1.46-35.67,4.11-53.44,6.66-13.41,1.93-26.74,4.47-39.84,6.7-.74,2.18-2.03,5.44-2.9,8.81-.49,1.91-.93,4.21-.32,5.97,13.97,39.98,28.08,79.9,42.2,119.82.46,1.3,1.19,3.23,2.17,3.5,6.87,1.9,5.42,4.55,2.65,9.88-5.7,10.96-15.73,14.38-26.1,16.77-19.06,4.4-38.12,3.87-56.87-2.58-8.89-3.06-14.84-9.11-18.8-17.18-.66-1.35,1.18-4.23,2.37-6.09,1.32-2.07,3.98-3.49,4.75-5.66,13.7-38.53,27.2-77.13,40.72-115.73,1.25-3.58,2.69-6.7-.53-10.74-1.6-2,.26-6.77.68-11.74.73,1.08.55.57.19.32-3.06-2.15-7.94-3.6-5.35-8.49.49-.94,6.16.25,9.12,1.33,10.56,3.87,20.67,1.7,30.61-1.96,22.72-8.36,45.88-14.78,70.17-16.26,6.76-.41,13.56-.06,20.34-.06,1.11-3.55,2.42-7.11,3.28-10.76.62-2.64.75-5.42.92-8.15.15-2.37.05-4.76.04-7.15-.02-2.56-.39-5.16-.02-7.66.52-3.55.54-8.12,2.72-10.19,1.79-1.69,7.72-1.73,9.49-.05,2.2,2.08,3.42,7.14,2.49,10.09-1.04,3.27-1.74,5.57.37,8.36.4.52.66,1.53.43,2.1-3.41,8.5,2.23,15.61,3.12,21.61,17.87,2.21,35.3,3.47,52.36,6.74,14.27,2.73,28.13,7.68,42.12,11.85,10.62,3.16,21.06,6.19,31.54-.67,1.22-.8,3.75.39,5.67.65-.47,1.95-.5,4.21-1.55,5.77-1,1.48-3.08,2.24-5.18,3.64,3.15,4.54,5.4,9.16.35,13.95-.72.69-.09,3.24.44,4.75,13.79,39.54,27.63,79.05,41.53,118.55.62,1.75,1.46,4.41,2.73,4.78,7.33,2.12,4.81,5.18,2.38,10.07-5.1,10.22-14.32,13.8-23.99,16.16-19.51,4.77-39.05,4.46-58.32-2.01-9.08-3.05-15.51-8.96-19.52-17.4-.65-1.38.75-4.16,1.87-5.85,1.69-2.56,4.88-4.42,5.85-7.13,13.4-37.6,26.56-75.29,39.68-112.98,1.46-4.19,3.65-8.38-.92-12.64-1.3-1.22-.2-5.01-.2-5.73-21.12-4.04-41.68-9-62.54-11.63-15.55-1.96-31.48-1-47.24-1.11-2.8-.02-5.61,1.1-6.35,1.26-1.54,6.05-3.24,10.57-3.64,15.19-.19,2.2,1.68,5.02,3.4,6.8,1.12,1.16,3.76.71,5.53,1.45,2.31.96,4.44,2.37,6.64,3.59-1.36,1.86-2.97,3.59-4.03,5.6-1.16,2.2-2.39,4.63-2.58,7.03-.68,8.79,1.92,18.15-5.39,25.65-.9.93-.45,3.28-.45,4.97-.03,27.53-.45,55.07.14,82.59.26,12.17,2.82,24.27,3.85,36.45.36,4.25-.76,8.63-2.01,12.9,3.4,6.65,11.5,10.55,12.57,20.13.29,2.62,6.35,5.87,10.16,6.55,6.1,1.08,9.69,3.45,11.37,9.48.46,1.64,3.05,3.55,4.85,3.78,3.82.48,7.76-.13,11.65-.17,5.6-.06,10.08,1.99,12.16,7.49,2.41,6.35.55,9.01-6.22,9.02-46.29.04-92.59.06-138.88-.04-2.41,0-6.71-.83-6.88-1.83-.5-2.86-.36-7.11,1.44-8.81,2.91-2.76,7.17-4.53,11.15-5.57,3.42-.89,7.34.29,10.87-.34,2.13-.38,4.92-2.05,5.74-3.88,2.33-5.23,5.73-8.06,11.49-8.68,5.97-.65,9.39-3.12,11.04-10.19,1.42-6.11,7.3-11.19,11.89-17.7ZM475.55,224.98l-2.18.62c0,17.45,0,34.9,0,52.36,0,17.28-.06,34.56,0,51.84,0,2.98-.89,6.76,4.19,6.75,11.87-.02,23.74,0,36.99,0-13.28-37.98-26.14-74.77-39-111.56ZM161.85,336.53c12.74,0,23.93-.25,35.1.11,5.32.17,6.53-1.87,6.5-6.78-.21-28.5-.14-57.01-.16-85.52,0-6.3,0-12.6,0-18.89l-2.29-.28c-12.86,36.59-25.73,73.19-39.15,111.36ZM470.02,225.05c-.68-.12-1.36-.24-2.04-.35-13.03,36.92-26.05,73.84-39.45,111.82,12.04,0,22.73-.37,33.38.14,6.44.31,8.33-1.73,8.26-8.18-.31-30.91-.14-61.82-.15-92.73,0-3.56,0-7.13,0-10.69ZM247.91,336.5c-13.52-38.19-26.61-75.17-39.71-112.15-1.43,9.88-1.41,19.34-1.43,28.81-.07,25.81-.23,51.62-.08,77.44.01,1.97,2.1,5.6,3.32,5.65,12.1.43,24.22.26,37.9.26Z"/></clipPath>
+        <clipPath id="sobe-bal"><rect id="sobe-rect" x="0" y="602" width="677" height="602"/></clipPath>
+      </defs>
+      <g id="louros">
+<path class="folha" d="M656.71,414.38c-.42,1.03-.61,2.22-1.27,3.02-7.72,9.32-15.02,19.05-23.39,27.76-15.42,16.03-33.56,27.78-56.13,30.91-4.37.61-9-.63-13.51-1.02-.38-.64-.76-1.28-1.15-1.91,3.63-5.62,6.58-11.85,11.01-16.74,22.29-24.58,50.73-37.51,83.14-42.46.28-.04.61.21,1.28.46Z"/>
+<path class="folha" d="M615.47,493.49c-2.19,2.4-3.25,4.16-4.8,5.16-13.41,8.6-26.51,17.8-40.48,25.39-16.34,8.88-34.16,11.96-52.61,7.69-3.36-.78-6.24-3.62-9.35-5.51,2.07-2.98,3.59-6.68,6.31-8.83,14.55-11.49,31.36-18.09,49.62-20.53,13.67-1.83,27.46-2.72,41.21-3.85,2.89-.24,5.85.26,10.09.5Z"/>
+<path class="folha" d="M675.76,326.39c-2.23,5.1-4.21,10.31-6.73,15.26-5.8,11.42-11.32,23.04-17.95,33.98-9.73,16.06-24.46,26.01-42.44,31.04-4.76,1.33-6.26-.16-5.51-5.14,1.79-11.94,7.71-22.2,13.9-32.29,4.69-7.63,10.76-13.93,18.27-18.86,12.9-8.46,25.75-16.99,38.62-25.49l1.84,1.5Z"/>
+<path class="folha" d="M552.56,558.9c-2.17,1.42-3.23,2.54-4.49,2.88-17.62,4.65-35.05,10.88-52.99,13.29-18.11,2.43-36.18-1.21-51.44-12.88-1.54-1.18-2.31-3.36-3.44-5.07,1.46-.91,2.83-2.08,4.41-2.68,18.89-7.17,38.27-9.46,58.24-5.63,15.32,2.94,30.65,5.83,45.97,8.77.78.15,1.51.52,3.74,1.31Z"/>
+<path class="folha" d="M672.3,240.77c-1.29,6.63-2.31,13.33-3.94,19.88-3.21,12.87-6.02,25.9-10.37,38.39-4.16,11.96-12.92,20.79-23.79,27.35-1.13.68-2.32,1.3-3.53,1.82-6.84,2.89-9.49,1.2-9.12-6.16.99-19.59,5.88-37.74,19.85-52.47,8.12-8.57,16.07-17.29,24.24-25.81,1.51-1.57,3.69-2.49,5.56-3.71l1.11.72Z"/>
+<path class="folha" d="M647.29,159.49c-.49,21.31,4.95,42.57.08,63.89-2.25,9.86-6.28,18.95-14.22,25.7-7.31,6.21-11.82,4.72-13.2-4.89-2.96-20.62-2.43-40.76,9.66-59.06,5.64-8.54,10.75-17.44,16.1-26.18.53.18,1.06.36,1.58.54Z"/>
+<path class="folha" d="M367.69,564.53c8.82-2.32,16.8-2.64,24.93-.93,16.68,3.53,32.78,8.36,47.69,17.03,8.59,5,17.93,8.7,26.82,13.2,3.54,1.79,6.78,4.17,9.49,7.03-7.07,0-14.16.4-21.19-.08-17.29-1.19-34.39-3.65-50.98-8.97-15.13-4.85-26.6-14.58-36.75-27.29Z"/>
+<path class="folha" d="M569.12,356.05c1.6,1.88,3.46,3.2,4.09,4.96,9.08,25.43,12.47,51.33,5.07,77.8-2.41,8.61-6.05,16.64-15.46,19.88-8.02-15.79-8.84-32.31-5.38-49.15,3.61-17.53,7.62-34.99,11.68-53.5Z"/>
+<path class="folha" d="M579.52,290.32c.87.45,1.26.52,1.42.75,12.34,17.23,24.66,34.65,27.73,56.25,2.11,14.79,1.3,29.6-8.05,43.76-2.4-2.68-5.34-5.09-7.19-8.16-6.16-10.26-10.05-21.49-10.96-33.38-1.44-18.92-2.17-37.89-3.19-56.84-.03-.63.12-1.26.24-2.37Z"/>
+<path class="folha" d="M543.15,418.46c1.63,20.76,5.02,41.15-1.71,61.07-4.88,14.47-15.1,24.75-27.31,33.28-1.3.91-2.89,1.39-4.58,2.18-.02-21.92,1.21-42.87,13.45-61.72,6.49-9.99,11.57-20.88,17.36-31.32.71-1.28,1.84-2.33,2.78-3.49Z"/>
+<path class="folha" d="M502.52,469.77c-4.11,28.42-11.25,54.2-35.19,71.55-4.48,3.24-9.89,5.49-15.19,7.21-5.17,1.69-7.43-.8-6.78-6.28,1.46-12.24,7.39-22.53,15.4-31.33,11.98-13.17,24.73-25.64,37.21-38.34.98-1,2.43-1.53,4.55-2.81Z"/>
+<path class="folha" d="M607.21,92.72c4.56,17.63,9.87,35.11,13.42,52.94,2.49,12.47-3.36,23.73-9.88,34.14-2.24,3.57-4.74,3.05-7.23-.64-7.77-11.51-11.48-24.12-11.36-38.06.14-15.34,2.57-30.1,9.26-43.99.84-1.74,2.57-3.06,3.9-4.57.63.06,1.26.12,1.89.18Z"/>
+<path class="folha" d="M547.06,37.56c13.52,16.77,29.66,31.54,32.76,54.31,1.5,11.02.48,20.26-3.3,30.72-6.51-2.41-11.11-7.21-15.29-12.31-9.27-11.31-14.24-24.28-14.18-39.05.05-10.97,0-21.94,0-33.67Z"/>
+<path class="folha" d="M574.27,225.02c3.05,2.76,6.28,5.36,9.12,8.33,6.34,6.6,12.9,13.05,18.65,20.15,12.93,15.96,17.49,34.75,17.09,54.93-.05,2.53-1.22,5.03-2.26,9.07-3.08-2.97-5.43-4.88-7.36-7.14-11.82-13.88-19.88-29.83-25.41-47.09-3.5-10.92-6.73-21.92-10.04-32.89-.47-1.54-.69-3.16-1.03-4.74.41-.21.83-.41,1.24-.62Z"/>
+<path class="folha" d="M446.65,508.6c-1.73,9.44-5.96,16.98-11.37,23.96-1.94,2.5-4.22,4.75-5.94,7.38-9.17,14.01-22.63,19.34-38.73,19.52-1.33.02-2.66.02-3.99.02-7.92,0-9.57-2.41-5.6-9.55,6.35-11.44,15.03-20.71,27.33-25.95,11.46-4.88,23.01-9.54,34.53-14.28,1-.41,2.1-.62,3.78-1.1Z"/>
+<path class="folha" d="M614.8,242.4c-2.68-1.09-5.53-1.68-7.69-3.23-12.68-9.09-23.55-19.9-32.05-33.16-6.54-10.19-13.91-19.85-20.9-29.75-1.32-1.87-2.57-3.79-3.98-5.87,9.45-1.02,34.78,14.24,47.89,28.51,11.78,12.83,19.16,31.46,16.73,43.49Z"/>
+<path class="folha" d="M483.53,8.8c6.51,4.43,13.52,8.3,19.4,13.45,7.23,6.33,13.88,13.43,20.12,20.77,6.33,7.46,8.22,16.63,7.13,26.27-.67,6-2.78,7.04-8.47,4.73-.46-.19-.98-.3-1.38-.58-22.18-15.28-35.61-35.82-38.03-62.98.41-.56.81-1.11,1.22-1.67Z"/>
+<path class="folha" d="M595.79,174.69c-5.07-1.28-9.44-1.5-12.87-3.41-10.12-5.64-20.23-11.43-29.66-18.13-9.47-6.73-18.19-14.52-27.07-22.05-3.17-2.68-5.85-5.92-8.76-8.91.38-.61.77-1.23,1.15-1.84,7,1.74,14.08,3.22,20.99,5.26,14.81,4.39,28.58,10.98,40.2,21.33,7.86,7.01,13.15,15.73,16.03,27.75Z"/>
+<path class="folha" d="M476.01,91.37c18.43-13.75,74.79,3.5,86.29,25.36-32.3,3.6-57.89-13.91-86.29-25.36Z"/>
+<path class="folha" d="M416.05,1.18c12.43,3.95,25.18,7.11,37.19,12.08,10.8,4.47,18.56,12.75,20.58,25.06,1.02,6.2-1.02,8.23-7.45,7.29-9.39-1.37-17.82-5.07-25.35-10.82-10.19-7.78-17.6-17.99-24.63-28.5-.7-1.04-.87-2.43-1.29-3.65l.97-1.45Z"/>
+<path class="folha" d="M428.11,72.71c2.27-1.88,3.22-3.19,4.48-3.62,16.67-5.73,33.38-11.82,51.43-9.25,6.65.95,13.29,3,19.52,5.56,3.69,1.52,6.57,5.01,9.81,7.61-.17.72-.34,1.43-.51,2.15-2.99.92-5.92,2.22-8.98,2.7-15.62,2.43-31.16.39-46.67-1.37-9.21-1.04-18.39-2.38-29.07-3.78Z"/>
+<path class="folha" d="M20.27,414.38c.42,1.03.61,2.22,1.27,3.02,7.72,9.32,15.02,19.05,23.39,27.76,15.42,16.03,33.56,27.78,56.13,30.91,4.37.61,9-.63,13.51-1.02.38-.64.76-1.28,1.15-1.91-3.63-5.62-6.58-11.85-11.01-16.74-22.29-24.58-50.73-37.51-83.14-42.46-.28-.04-.61.21-1.28.46Z"/>
+<path class="folha" d="M61.51,493.49c2.19,2.4,3.25,4.16,4.8,5.16,13.41,8.6,26.51,17.8,40.48,25.39,16.34,8.88,34.16,11.96,52.61,7.69,3.36-.78,6.24-3.62,9.35-5.51-2.07-2.98-3.59-6.68-6.31-8.83-14.55-11.49-31.36-18.09-49.62-20.53-13.67-1.83-27.46-2.72-41.21-3.85-2.89-.24-5.85.26-10.09.5Z"/>
+<path class="folha" d="M1.22,326.39c2.23,5.1,4.21,10.31,6.73,15.26,5.8,11.42,11.32,23.04,17.95,33.98,9.73,16.06,24.46,26.01,42.44,31.04,4.76,1.33,6.26-.16,5.51-5.14-1.79-11.94-7.71-22.2-13.9-32.29-4.69-7.63-10.76-13.93-18.27-18.86-12.9-8.46-25.75-16.99-38.62-25.49-.61.5-1.23,1-1.84,1.5Z"/>
+<path class="folha" d="M124.42,558.9c2.17,1.42,3.23,2.54,4.49,2.88,17.62,4.65,35.05,10.88,52.99,13.29,18.11,2.43,36.18-1.21,51.44-12.88,1.54-1.18,2.31-3.36,3.44-5.07-1.46-.91-2.83-2.08-4.41-2.68-18.89-7.17-38.27-9.46-58.24-5.63-15.32,2.94-30.65,5.83-45.97,8.77-.78.15-1.51.52-3.74,1.31Z"/>
+<path class="folha" d="M4.68,240.77c1.29,6.63,2.31,13.33,3.94,19.88,3.21,12.87,6.02,25.9,10.37,38.39,4.16,11.96,12.92,20.79,23.79,27.35,1.13.68,2.32,1.3,3.53,1.82,6.84,2.89,9.49,1.2,9.12-6.16-.99-19.59-5.88-37.74-19.85-52.47-8.12-8.57-16.07-17.29-24.24-25.81-1.51-1.57-3.69-2.49-5.56-3.71l-1.11.72Z"/>
+<path class="folha" d="M29.69,159.49c.49,21.31-4.95,42.57-.08,63.89,2.25,9.86,6.28,18.95,14.22,25.7,7.31,6.21,11.82,4.72,13.2-4.89,2.96-20.62,2.43-40.76-9.66-59.06-5.64-8.54-10.75-17.44-16.1-26.18-.53.18-1.06.36-1.58.54Z"/>
+<path class="folha" d="M309.29,564.53c-8.82-2.32-16.8-2.64-24.93-.93-16.68,3.53-32.78,8.36-47.69,17.03-8.59,5-17.93,8.7-26.82,13.2-3.54,1.79-6.78,4.17-9.49,7.03,7.07,0,14.16.4,21.19-.08,17.29-1.19,34.39-3.65,50.98-8.97,15.13-4.85,26.6-14.58,36.75-27.29Z"/>
+<path class="folha" d="M107.86,356.05c-1.6,1.88-3.46,3.2-4.09,4.96-9.08,25.43-12.47,51.33-5.07,77.8,2.41,8.61,6.05,16.64,15.46,19.88,8.02-15.79,8.84-32.31,5.38-49.15-3.61-17.53-7.62-34.99-11.68-53.5Z"/>
+<path class="folha" d="M97.46,290.32c-.87.45-1.26.52-1.42.75-12.34,17.23-24.66,34.65-27.73,56.25-2.11,14.79-1.3,29.6,8.05,43.76,2.4-2.68,5.34-5.09,7.19-8.16,6.16-10.26,10.05-21.49,10.96-33.38,1.44-18.92,2.17-37.89,3.19-56.84.03-.63-.12-1.26-.24-2.37Z"/>
+<path class="folha" d="M133.83,418.46c-1.63,20.76-5.02,41.15,1.71,61.07,4.88,14.47,15.1,24.75,27.31,33.28,1.3.91,2.89,1.39,4.58,2.18.02-21.92-1.21-42.87-13.45-61.72-6.49-9.99-11.57-20.88-17.36-31.32-.71-1.28-1.84-2.33-2.78-3.49Z"/>
+<path class="folha" d="M174.46,469.77c4.11,28.42,11.25,54.2,35.19,71.55,4.48,3.24,9.89,5.49,15.19,7.21,5.17,1.69,7.43-.8,6.78-6.28-1.46-12.24-7.39-22.53-15.4-31.33-11.98-13.17-24.73-25.64-37.21-38.34-.98-1-2.43-1.53-4.55-2.81Z"/>
+<path class="folha" d="M69.78,92.72c-4.56,17.63-9.87,35.11-13.42,52.94-2.49,12.47,3.36,23.73,9.88,34.14,2.24,3.57,4.74,3.05,7.23-.64,7.77-11.51,11.48-24.12,11.36-38.06-.14-15.34-2.57-30.1-9.26-43.99-.84-1.74-2.57-3.06-3.9-4.57-.63.06-1.26.12-1.89.18Z"/>
+<path class="folha" d="M129.93,37.56c-13.52,16.77-29.66,31.54-32.76,54.31-1.5,11.02-.48,20.26,3.3,30.72,6.51-2.41,11.11-7.21,15.29-12.31,9.27-11.31,14.24-24.28,14.18-39.05-.05-10.97,0-21.94,0-33.67Z"/>
+<path class="folha" d="M102.72,225.02c-3.05,2.76-6.28,5.36-9.12,8.33-6.34,6.6-12.9,13.05-18.65,20.15-12.93,15.96-17.49,34.75-17.09,54.93.05,2.53,1.22,5.03,2.26,9.07,3.08-2.97,5.43-4.88,7.36-7.14,11.82-13.88,19.88-29.83,25.41-47.09,3.5-10.92,6.73-21.92,10.04-32.89.47-1.54.69-3.16,1.03-4.74-.41-.21-.83-.41-1.24-.62Z"/>
+<path class="folha" d="M230.33,508.6c1.73,9.44,5.96,16.98,11.37,23.96,1.94,2.5,4.22,4.75,5.94,7.38,9.17,14.01,22.63,19.34,38.73,19.52,1.33.02,2.66.02,3.99.02,7.92,0,9.57-2.41,5.6-9.55-6.35-11.44-15.03-20.71-27.33-25.95-11.46-4.88-23.01-9.54-34.53-14.28-1-.41-2.1-.62-3.78-1.1Z"/>
+<path class="folha" d="M62.18,242.4c2.68-1.09,5.53-1.68,7.69-3.23,12.68-9.09,23.55-19.9,32.05-33.16,6.54-10.19,13.91-19.85,20.9-29.75,1.32-1.87,2.57-3.79,3.98-5.87-9.45-1.02-34.78,14.24-47.89,28.51-11.78,12.83-19.16,31.46-16.73,43.49Z"/>
+<path class="folha" d="M193.45,8.8c-6.51,4.43-13.52,8.3-19.4,13.45-7.23,6.33-13.88,13.43-20.12,20.77-6.33,7.46-8.22,16.63-7.13,26.27.67,6,2.78,7.04,8.47,4.73.46-.19.98-.3,1.38-.58,22.18-15.28,35.61-35.82,38.03-62.98-.41-.56-.81-1.11-1.22-1.67Z"/>
+<path class="folha" d="M81.2,174.69c5.07-1.28,9.44-1.5,12.87-3.41,10.12-5.64,20.23-11.43,29.66-18.13,9.47-6.73,18.19-14.52,27.07-22.05,3.17-2.68,5.85-5.92,8.76-8.91-.38-.61-.77-1.23-1.15-1.84-7,1.74-14.08,3.22-20.99,5.26-14.81,4.39-28.58,10.98-40.2,21.33-7.86,7.01-13.15,15.73-16.03,27.75Z"/>
+<path class="folha" d="M200.97,91.37c-18.43-13.75-74.79,3.5-86.29,25.36,32.3,3.6,57.89-13.91,86.29-25.36Z"/>
+<path class="folha" d="M260.93,1.18c-12.43,3.95-25.18,7.11-37.19,12.08-10.8,4.47-18.56,12.75-20.58,25.06-1.02,6.2,1.02,8.23,7.45,7.29,9.39-1.37,17.82-5.07,25.35-10.82,10.19-7.78,17.6-17.99,24.63-28.5.7-1.04.87-2.43,1.29-3.65l-.97-1.45Z"/>
+<path class="folha" d="M248.87,72.71c-2.27-1.88-3.22-3.19-4.48-3.62-16.67-5.73-33.38-11.82-51.43-9.25-6.65.95-13.29,3-19.52,5.56-3.69,1.52-6.57,5.01-9.81,7.61.17.72.34,1.43.51,2.15,2.99.92,5.92,2.22,8.98,2.7,15.62,2.43,31.16.39,46.67-1.37,9.21-1.04,18.39-2.38,29.07-3.78Z"/>
+      </g>
+      <g class="balanca" clip-path="url(#sobe-bal)">
+        <path d="M325.65,388.49c-3.91-2.98-3.95-7.98-2.54-13.94.97-4.11-.89-8.87-.04-13.05,6.94-34.15,2.64-68.67,3.67-103.01.1-3.31-2.15-6.62-2.72-10.03-.9-5.43-1.54-10.93-1.84-16.43-.3-5.49.98-11.04-5.6-14.46-3.52-1.83-2.44-5.11,1.23-6.39,2.72-.95,6.3-.37,8.41-1.93,2.1-1.56,4.01-4.98,3.93-7.52-.14-4.41-1.87-8.77-3.39-15.05-6.11-.65-14.34-2.78-22.34-2.12-17.88,1.46-35.67,4.11-53.44,6.66-13.41,1.93-26.74,4.47-39.84,6.7-.74,2.18-2.03,5.44-2.9,8.81-.49,1.91-.93,4.21-.32,5.97,13.97,39.98,28.08,79.9,42.2,119.82.46,1.3,1.19,3.23,2.17,3.5,6.87,1.9,5.42,4.55,2.65,9.88-5.7,10.96-15.73,14.38-26.1,16.77-19.06,4.4-38.12,3.87-56.87-2.58-8.89-3.06-14.84-9.11-18.8-17.18-.66-1.35,1.18-4.23,2.37-6.09,1.32-2.07,3.98-3.49,4.75-5.66,13.7-38.53,27.2-77.13,40.72-115.73,1.25-3.58,2.69-6.7-.53-10.74-1.6-2,.26-6.77.68-11.74.73,1.08.55.57.19.32-3.06-2.15-7.94-3.6-5.35-8.49.49-.94,6.16.25,9.12,1.33,10.56,3.87,20.67,1.7,30.61-1.96,22.72-8.36,45.88-14.78,70.17-16.26,6.76-.41,13.56-.06,20.34-.06,1.11-3.55,2.42-7.11,3.28-10.76.62-2.64.75-5.42.92-8.15.15-2.37.05-4.76.04-7.15-.02-2.56-.39-5.16-.02-7.66.52-3.55.54-8.12,2.72-10.19,1.79-1.69,7.72-1.73,9.49-.05,2.2,2.08,3.42,7.14,2.49,10.09-1.04,3.27-1.74,5.57.37,8.36.4.52.66,1.53.43,2.1-3.41,8.5,2.23,15.61,3.12,21.61,17.87,2.21,35.3,3.47,52.36,6.74,14.27,2.73,28.13,7.68,42.12,11.85,10.62,3.16,21.06,6.19,31.54-.67,1.22-.8,3.75.39,5.67.65-.47,1.95-.5,4.21-1.55,5.77-1,1.48-3.08,2.24-5.18,3.64,3.15,4.54,5.4,9.16.35,13.95-.72.69-.09,3.24.44,4.75,13.79,39.54,27.63,79.05,41.53,118.55.62,1.75,1.46,4.41,2.73,4.78,7.33,2.12,4.81,5.18,2.38,10.07-5.1,10.22-14.32,13.8-23.99,16.16-19.51,4.77-39.05,4.46-58.32-2.01-9.08-3.05-15.51-8.96-19.52-17.4-.65-1.38.75-4.16,1.87-5.85,1.69-2.56,4.88-4.42,5.85-7.13,13.4-37.6,26.56-75.29,39.68-112.98,1.46-4.19,3.65-8.38-.92-12.64-1.3-1.22-.2-5.01-.2-5.73-21.12-4.04-41.68-9-62.54-11.63-15.55-1.96-31.48-1-47.24-1.11-2.8-.02-5.61,1.1-6.35,1.26-1.54,6.05-3.24,10.57-3.64,15.19-.19,2.2,1.68,5.02,3.4,6.8,1.12,1.16,3.76.71,5.53,1.45,2.31.96,4.44,2.37,6.64,3.59-1.36,1.86-2.97,3.59-4.03,5.6-1.16,2.2-2.39,4.63-2.58,7.03-.68,8.79,1.92,18.15-5.39,25.65-.9.93-.45,3.28-.45,4.97-.03,27.53-.45,55.07.14,82.59.26,12.17,2.82,24.27,3.85,36.45.36,4.25-.76,8.63-2.01,12.9,3.4,6.65,11.5,10.55,12.57,20.13.29,2.62,6.35,5.87,10.16,6.55,6.1,1.08,9.69,3.45,11.37,9.48.46,1.64,3.05,3.55,4.85,3.78,3.82.48,7.76-.13,11.65-.17,5.6-.06,10.08,1.99,12.16,7.49,2.41,6.35.55,9.01-6.22,9.02-46.29.04-92.59.06-138.88-.04-2.41,0-6.71-.83-6.88-1.83-.5-2.86-.36-7.11,1.44-8.81,2.91-2.76,7.17-4.53,11.15-5.57,3.42-.89,7.34.29,10.87-.34,2.13-.38,4.92-2.05,5.74-3.88,2.33-5.23,5.73-8.06,11.49-8.68,5.97-.65,9.39-3.12,11.04-10.19,1.42-6.11,7.3-11.19,11.89-17.7ZM475.55,224.98l-2.18.62c0,17.45,0,34.9,0,52.36,0,17.28-.06,34.56,0,51.84,0,2.98-.89,6.76,4.19,6.75,11.87-.02,23.74,0,36.99,0-13.28-37.98-26.14-74.77-39-111.56ZM161.85,336.53c12.74,0,23.93-.25,35.1.11,5.32.17,6.53-1.87,6.5-6.78-.21-28.5-.14-57.01-.16-85.52,0-6.3,0-12.6,0-18.89l-2.29-.28c-12.86,36.59-25.73,73.19-39.15,111.36ZM470.02,225.05c-.68-.12-1.36-.24-2.04-.35-13.03,36.92-26.05,73.84-39.45,111.82,12.04,0,22.73-.37,33.38.14,6.44.31,8.33-1.73,8.26-8.18-.31-30.91-.14-61.82-.15-92.73,0-3.56,0-7.13,0-10.69ZM247.91,336.5c-13.52-38.19-26.61-75.17-39.71-112.15-1.43,9.88-1.41,19.34-1.43,28.81-.07,25.81-.23,51.62-.08,77.44.01,1.97,2.1,5.6,3.32,5.65,12.1.43,24.22.26,37.9.26Z" fill="url(#ouro-bal)"/>
+        <g clip-path="url(#forma-bal)"><rect id="brilho-bal" x="0" y="0" width="200" height="602" fill="url(#faixa-luz)" transform="skewX(-15)"/></g>
+      </g>
+    </svg>
+  </div>
+
+  <img class="el fx-wipe" data-g="g1" style="left:19.1667%;top:14.1269%;width:61.5741%;--d:0ms" src="img/frase1.png" alt="Encerramos os autos desta jornada." decoding="async"><img class="el fx-wipe" data-g="g1" style="left:19.1667%;top:15.2922%;width:61.5741%;--d:450ms" src="img/frase2.png" alt="Agora, que comece a festa!" decoding="async">
+  <img class="el fx-spread" data-g="g2" style="left:19.3519%;top:19.3797%;width:61.3889%;--d:0ms" src="img/baile.png" alt="Baile de Formatura" decoding="async"><div class="el fx-escrita" data-g="g2" style="left:21.6667%;top:19.8638%;width:56.7593%;--d:500ms"><img src="img/direito.png" alt="Direito"><i class="faisca"></i></div>
+  <img class="el fx-nome" data-g="g3" style="left:12.9630%;top:26.4970%;width:20.5556%;--d:0ms" src="img/nome0.png" alt="" decoding="async"><img class="el fx-ponto" data-g="g3" style="left:33.5185%;top:26.4970%;width:1.8519%;--d:170ms" src="img/nome1.png" alt="" decoding="async"><img class="el fx-nome" data-g="g3" style="left:35.3704%;top:26.4970%;width:19.4444%;--d:340ms" src="img/nome2.png" alt="" decoding="async"><img class="el fx-ponto" data-g="g3" style="left:54.8148%;top:26.4970%;width:2.0370%;--d:510ms" src="img/nome3.png" alt="" decoding="async"><img class="el fx-nome" data-g="g3" style="left:56.8519%;top:26.4970%;width:11.2963%;--d:680ms" src="img/nome4.png" alt="" decoding="async"><img class="el fx-ponto" data-g="g3" style="left:68.1481%;top:26.4970%;width:1.9444%;--d:850ms" src="img/nome5.png" alt="" decoding="async"><img class="el fx-nome" data-g="g3" style="left:70.0926%;top:26.4970%;width:16.5741%;--d:1020ms" src="img/nome6.png" alt="" decoding="async">
+  <img class="el fx-linha" data-g="g4" style="left:13.6111%;top:32.0904%;width:72.5926%;--d:0ms" src="img/linhas.png" alt="" decoding="async"><img class="el fx-desce" data-g="g4" style="left:37.8704%;top:29.5446%;width:24.5370%;--d:250ms" src="img/janeiro.png" alt="Janeiro" decoding="async"><img class="el fx-trinta" data-g="g4" style="left:40.3704%;top:31.4091%;width:18.6111%;--d:450ms" src="img/trinta.png" alt="30" decoding="async"><img class="el fx-esq" data-g="g4" style="left:14.6296%;top:32.3593%;width:20.3704%;--d:800ms" src="img/sabado.png" alt="Sábado" decoding="async"><img class="el fx-dir" data-g="g4" style="left:66.9444%;top:32.3413%;width:14.2593%;--d:800ms" src="img/hora.png" alt="21:00" decoding="async"><img class="el fx-sobe" data-g="g4" style="left:39.9074%;top:35.0484%;width:20.2778%;--d:1000ms" src="img/ano.png" alt="2027" decoding="async">
+
+  <div class="aura" data-g="g5" style="left:15.4630%;top:37.5941%;width:67.5000%;height:13.4278%"></div>
+  <div class="el dama" data-g="g5" id="dama" style="left:26.5741%;top:38.6698%;width:45.2778%;--d:200ms">
+    <img src="img/estatua.webp" alt="Dama da Justiça dourada">
+    <img class="prato" id="prato-esq" src="img/prato-esq.webp" alt="">
+    <img class="prato" id="prato-dir" src="img/prato-dir.webp" alt="">
+  </div>
+  <div class="el fx-tecido" data-g="g5" style="left:0.0000%;top:50.7171%;width:100.0000%;--d:0ms"><img src="img/tecido.webp" alt=""></div>
+
+  <section class="contagem" data-g="g6" style="top:62.2087%" aria-label="Contagem regressiva">
+    <div class="titulo">FALTAM</div>
+    <div class="sub">para a nossa grande noite</div>
+    <div class="relogio" id="relogio">
+      <div class="uni" style="--i:0"><b id="d">00</b><small>dias</small></div>
+      <div class="uni" style="--i:1"><b id="h">00</b><small>horas</small></div>
+      <div class="uni" style="--i:2"><b id="m">00</b><small>min</small></div>
+      <div class="uni" style="--i:3"><b id="s">00</b><small>seg</small></div>
+    </div>
+    <div class="chegou" id="chegou">Chegou a grande noite!</div>
+  </section>
+
+  <img class="el fx-blur" data-g="g7" style="left:33.4259%;top:72.3736%;width:33.1481%;--d:0ms" src="img/dress.png" alt="Dress code:" decoding="async"><img class="el fx-spread" data-g="g7" style="left:32.0370%;top:73.7182%;width:35.9259%;--d:300ms" src="img/esporte.png" alt="Esporte fino" decoding="async">
+  <img class="el fx-blur" data-g="g8" style="left:30.7407%;top:78.4511%;width:38.5185%;--d:0ms" src="img/localtit.png" alt="Localização" decoding="async"><img class="el fx-wipe" data-g="g8" style="left:15.8333%;top:79.9032%;width:69.3519%;--d:350ms" src="img/endereco.png" alt="Cerimonial Caminho das Árvores, Alameda das Framboesas, 151 - Caminho das Árvores, Salvador - BA" decoding="async">
+  <a class="el icone" data-g="g9" style="left:28.4259%;top:85.7655%;width:18.6111%;--d:0ms" href="https://www.google.com/maps/search/?api=1&query=Cerimonial+Caminho+das+%C3%81rvores%2C+Alameda+das+Framboesas%2C+151%2C+Caminho+das+%C3%81rvores%2C+Salvador+-+BA" target="_blank" rel="noopener" aria-label="Abrir localização no Google Maps"><img src="img/icone_mapa.png" alt=""><span class="reflexo"></span></a><button class="el icone" data-g="g9" style="left:52.9630%;top:85.7655%;width:18.5185%;--d:160ms" type="button" id="abrir-rsvp" aria-label="Confirmar presença"><img src="img/icone_rsvp.png" alt=""><span class="reflexo"></span></button><img class="el fx-blur" data-g="g9" style="left:26.8519%;top:89.9964%;width:20.7407%;--d:500ms" src="img/txt_mapa.png" alt="" decoding="async"><img class="el fx-blur" data-g="g9" style="left:51.7593%;top:89.9606%;width:20.8333%;--d:600ms" src="img/txt_rsvp.png" alt="" decoding="async"><img class="el fx-blur" data-g="g9" style="left:34.1667%;top:92.7931%;width:33.4259%;--d:900ms" src="img/txt_clique.png" alt="Clique no ícone para interagir!" decoding="async">
+</main>
+
+<div id="rsvp" role="dialog" aria-modal="true" aria-label="Confirmar presença">
+  <div class="janela">
+    <button class="fechar" type="button" aria-label="Fechar">×</button>
+    <div class="conteudo"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ===== AJUSTES ===== */
+  var DATA_EVENTO='2027-01-30T21:00:00-03:00';
+  var FORMS_URL='';   // cole aqui o link do Google Forms (o mesmo que abre no celular)
+
+  var pagina=document.getElementById('pagina'), logo=document.getElementById('logo'), veu=document.getElementById('veu');
+  var semMov=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function unidade(){ pagina.style.setProperty('--u',(pagina.clientWidth/1080)+'px'); document.documentElement.style.setProperty('--u',(pagina.clientWidth/1080)+'px'); }
+  unidade(); addEventListener('resize',unidade);
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  scrollTo(0,0);
+
+  /* ===== ABERTURA: louros se desenham, balança sobe, brilho, logo voa para o lugar ===== */
+  var folhas=[].slice.call(document.querySelectorAll('.folha'));
+  folhas.forEach(function(f){ var L=f.getTotalLength(); f.style.strokeDasharray=L; f.style.strokeDashoffset=L; f._y=f.getBBox().y; f._x=f.getBBox().x; });
+  var esq=folhas.filter(function(f){return f._x<338}).sort(function(a,b){return b._y-a._y});
+  var dir=folhas.filter(function(f){return f._x>=338}).sort(function(a,b){return b._y-a._y});
+  var rect=document.getElementById('sobe-rect');
+
+  function posicionarCentro(){
+    var r=logo.getBoundingClientRect(), vw=innerWidth, vh=innerHeight;
+    var s=Math.min(1.45,(vw*0.78)/r.width,(vh*0.5)/r.height);
+    var tx=(vw-r.width*s)/2-r.left, ty=(vh-r.height*s)/2-r.top;
+    logo.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';
+  }
+
+  function anima(dur,fn,fim){ var t0=null; function q(t){ if(t0===null)t0=t; var p=Math.min(1,(t-t0)/dur); fn(p); if(p<1) requestAnimationFrame(q); else if(fim) fim(); } requestAnimationFrame(q); }
+  var easeOut=function(p){return 1-Math.pow(1-p,3)}, easeInOut=function(p){return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2};
+
+  function abertura(){
+    if(semMov){ folhas.forEach(function(f){f.style.strokeDashoffset=0}); rect.setAttribute('y',0); fimAbertura(true); return; }
+    posicionarCentro();
+    var n=Math.max(esq.length,dir.length), passo=95, durF=700;
+    setTimeout(function(){
+      for(var i=0;i<n;i++)(function(i){
+        setTimeout(function(){ [esq[i],dir[i]].forEach(function(f){ if(!f)return; f.style.transition='stroke-dashoffset '+durF+'ms cubic-bezier(.4,0,.2,1)'; f.style.strokeDashoffset=0; }); }, i*passo);
+      })(i);
+    },250);
+    setTimeout(function(){ anima(1100,function(p){ rect.setAttribute('y',602*(1-easeInOut(p))); }); },700);
+    setTimeout(function(){ logo.classList.add('brilha','halo'); },1850);
+    setTimeout(function(){ fimAbertura(false); },2900);
+  }
+  function fimAbertura(direto){
+    logo.classList.add('voa'); logo.style.transform='none';
+    veu.classList.add('some');
+    setTimeout(function(){ document.body.classList.remove('intro'); veu.remove(); iniciarEntradas(); }, direto?0:700);
+  }
+
+  /* ===== ENTRADAS AO ROLAR (por grupos) ===== */
+  function iniciarEntradas(){
+    var grupos={};
+    document.querySelectorAll('[data-g]').forEach(function(el){ (grupos[el.dataset.g]=grupos[el.dataset.g]||[]).push(el); });
+    var fila=[], ocupado=false;
+    function liga(g){ fila.push(g); if(!ocupado) proximo(); }
+    function proximo(){ var g=fila.shift(); if(!g){ocupado=false;return;} ocupado=true;
+      grupos[g].forEach(function(el){ el.classList.add('on'); });
+      if(g==='g5') setTimeout(function(){ empurrar(260); },1600);
+      if(g==='g6') rolarNumeros();
+      setTimeout(proximo,550);
+    }
+    if(!('IntersectionObserver' in window)){ Object.keys(grupos).forEach(liga); return; }
+    var obs=new IntersectionObserver(function(es){
+      es.sort(function(a,b){return a.boundingClientRect.top-b.boundingClientRect.top}).forEach(function(e){
+        if(!e.isIntersecting) return; var g=e.target.dataset.g; obs.unobserve(e.target);
+        if(!grupos[g]._ok){ grupos[g]._ok=1; liga(g); }
+      });
+    },{threshold:0.25,rootMargin:'0px 0px -8% 0px'});
+    Object.keys(grupos).forEach(function(g){ obs.observe(grupos[g][0]); });
+  }
+
+  /* ===== PRATOS DA BALANÇA: pêndulos suaves movidos pela rolagem ===== */
+  var pE=document.getElementById('prato-esq'), pD=document.getElementById('prato-dir');
+  var pend=[{a:0,v:0,k:0.0016,c:0.012,el:pE},{a:0,v:0,k:0.0014,c:0.011,el:pD}];
+  var FORCA=0.00035, MAX=4, ultimoY=scrollY, pendente=0;
+  function empurrar(px){ pendente+=px; }
+  addEventListener('scroll',function(){ var d=scrollY-ultimoY; ultimoY=scrollY; pendente+=Math.max(-120,Math.min(120,d)); },{passive:true});
+  (function loop(){
+    var e=pendente*0.06; pendente-=e;
+    pend.forEach(function(o){ o.v+=e*FORCA-o.k*o.a; o.v*=1-o.c; o.a+=o.v; if(Math.abs(o.a)>MAX){o.a=Math.sign(o.a)*MAX;o.v*=.5;} o.el.style.transform='rotate('+o.a.toFixed(3)+'deg)'; });
+    requestAnimationFrame(loop);
+  })();
+
+  /* ===== CONTAGEM ===== */
+  var alvo=new Date(DATA_EVENTO).getTime(), rel=document.getElementById('relogio'), contando=false;
+  var dois=function(n){return (n<10?'0':'')+n};
+  function valores(){ var r=Math.max(0,alvo-Date.now()), s=Math.floor(r/1000); return [Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60,r]; }
+  function escreve(v){ document.getElementById('d').textContent=v[0]<10?'0'+v[0]:v[0]; document.getElementById('h').textContent=dois(v[1]); document.getElementById('m').textContent=dois(v[2]); document.getElementById('s').textContent=dois(v[3]); }
+  function rolarNumeros(){
+    var v=valores(); if(v[4]<=0){ rel.style.display='none'; document.getElementById('chegou').style.display='block'; return; }
+    if(semMov){ escreve(v); tique(); return; }
+    setTimeout(function(){ anima(1600,function(p){ var e=easeOut(p); escreve([Math.round(v[0]*e),Math.round(v[1]*e),Math.round(v[2]*e),Math.round(v[3]*e)]); },tique); },500);
+  }
+  function tique(){ if(contando)return; contando=true; (function t(){ var v=valores(); if(v[4]<=0){ rel.style.display='none'; document.getElementById('chegou').style.display='block'; return; } escreve(v); setTimeout(t,1000); })(); }
+
+  /* ===== POEIRA DOURADA (bem sutil) ===== */
+  var cv=document.getElementById('poeira'), cx=cv.getContext('2d'), parts=[], dpr=Math.min(2,devicePixelRatio||1);
+  function tam(){ cv.width=innerWidth*dpr; cv.height=innerHeight*dpr; }
+  tam(); addEventListener('resize',tam);
+  if(!semMov){
+    for(var i=0;i<34;i++) parts.push({x:Math.random(),y:Math.random(),r:.6+Math.random()*1.6,v:.00012+Math.random()*.00035,f:Math.random()*6.28,a:.15+Math.random()*.45});
+    (function voa(){
+      cx.clearRect(0,0,cv.width,cv.height);
+      parts.forEach(function(p){ p.y-=p.v; p.f+=.012; if(p.y<-.02){p.y=1.02;p.x=Math.random();}
+        var x=(p.x+Math.sin(p.f)*.012)*cv.width, y=p.y*cv.height, r=p.r*dpr, al=p.a*(.6+.4*Math.sin(p.f*1.7));
+        var g=cx.createRadialGradient(x,y,0,x,y,r*3); g.addColorStop(0,'rgba(255,226,150,'+al+')'); g.addColorStop(1,'rgba(255,226,150,0)');
+        cx.fillStyle=g; cx.beginPath(); cx.arc(x,y,r*3,0,6.283); cx.fill(); });
+      requestAnimationFrame(voa);
+    })();
+  }
+
+  /* ===== CONFIRMAÇÃO DE PRESENÇA (abre dentro do convite) ===== */
+  var rsvp=document.getElementById('rsvp'), cont=rsvp.querySelector('.conteudo');
+  document.getElementById('abrir-rsvp').addEventListener('click',function(){
+    if(!cont.firstChild){ cont.style.height='100%';
+      cont.innerHTML=FORMS_URL?'<iframe src="'+FORMS_URL+(FORMS_URL.indexOf('?')<0?'?':'&')+'embedded=true" title="Confirmar presença" loading="lazy"></iframe>':'<div class="aviso">A confirmação de presença estará disponível em breve.</div>'; }
+    rsvp.classList.add('aberto'); document.body.style.overflow='hidden';
+  });
+  function fechar(){ rsvp.classList.remove('aberto'); document.body.style.overflow=''; }
+  rsvp.querySelector('.fechar').addEventListener('click',fechar);
+  rsvp.addEventListener('click',function(e){ if(e.target===rsvp) fechar(); });
+  addEventListener('keydown',function(e){ if(e.key==='Escape') fechar(); });
+
+  /* começa quando a página e as fontes estiverem prontas */
+  var foi=false; function vai(){ if(foi)return; foi=true; unidade(); abertura(); }
+  if(document.readyState==='complete') setTimeout(vai,150); else addEventListener('load',function(){ setTimeout(vai,150); });
+  setTimeout(vai,3500);
+})();
+</script>
+</body>
+</html>
